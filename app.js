@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 app.use(express.static("public"));
+const port = process.env.PORT || 3000;
 app.get('/', (req, res) => res.sendFile(__dirname + '/signup.html'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -49,4 +50,4 @@ request(options, function(error, response, body){
 });
 });
 app.post("/failure", (req, res) => res.redirect("/"));
-app.listen(process.env.PORT || 3000, () => console.log(`Server listening on port 3000!`));
+app.listen(port, () => console.log(`Server listening on port ${port}!`));
